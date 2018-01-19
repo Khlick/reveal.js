@@ -1,0 +1,530 @@
+/**
+ * flatlandDk Theme for reveal.js based on black by Hakim El Hattab
+ *
+ * By Khris Griffis
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Oswald|PT+Sans:700,700i');
+
+
+// Insert custom variables --------------------
+$bgMainColor: 	#202020;  // dark grey 
+$bgRed:   #662121;  // dark redish
+$bgBlue: 	#111596;  // dark blueish  
+
+// text and decorations 
+
+$purple: 		#9469AD;  // purple  
+$mutedBlue: #88A9C9;  // muted blueish
+$offWhite: 	#FFF8D0;  // offwhite  
+$orange: 		#F79A52;  // orange  
+$red: 		  #E04B4B;  // red  
+$green:     #73B55B;  // green
+$grey:      #d2d2d2;  // grey
+$lightGrey: #f3f3f3;  // light grey
+$blue:      #4682B4;  // b
+//---------------------------------------------
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: $bgMainColor;
+
+$mainColor: $lightGrey;
+$headingColor: $offWhite;
+
+$mainFontWeight: 700; // from pt sans
+$mainFontSize: 41px;
+$mainFont: 'PT Sans', sans-serif;
+$headingFont: 'Open Sans', sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 300;
+$linkColor: $mutedBlue;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: $bgMainColor;
+	}
+}
+
+// Import Theme in case double def :(
+/*********************************************
+* TEMPLATE REVEAL CLASSES  (theme_trunc)
+*********************************************/
+// Theme template ------------------------------
+@import "../template/theme_trunc";
+// ---------------------------------------------
+
+// Insert custom layout
+
+/*********************************************
+* CUSTOM GLOBAL CLASSES
+*********************************************/
+
+/* Text Decorations */
+
+.normal { font-size: 1em !important; }
+.small { font-size: 0.75em !important; }
+.smaller { font-size: 0.6em !important; }
+.smallest { font-size: 0.5em !important; }
+.big { font-size: 1.1em !important; }
+.bigger { font-size: 1.25em !important; }
+.biggest { font-size: 1.5em !important; }
+
+.left { text-align: left !important; }
+.right { text-align: right !important; }
+.center { text-align: center !important; }
+.justify { text-align: justify !important; }
+
+.strong { font-weight: bold !important; }
+.em { font-style: italic !important; }
+.u { text-decoration: underline !important; }
+.strike { text-decoration: line-through !important; }
+
+.persistent {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+.removed {
+  display: none !important;
+}
+
+/* Text Colorizing */
+
+$cList: purple $purple, mutedBlue $mutedBlue, offWhite $offWhite, orange $orange, red $red, green $green, grey $grey, lightGrey $lightGrey, blue $blue;
+
+@each $cc in $cList {
+  .#{nth($cc,1)} {
+    color: nth($cc,2);
+  }
+  .#{nth($cc,1)}-underline {
+    text-decoration: underline;
+    text-decoration-color: nth($cc,2);
+    -webkit-text-decoration-color: nth($cc,2);
+  }
+  .#{nth($cc,1)}-strike {
+    text-decoration: line-through;
+    text-decoration-color: nth($cc,2);
+    -webkit-text-decoration-color: nth($cc,2);
+  }
+  .#{nth($cc,1)}-fill {
+    @if nth($cc,2) == $lightGrey or nth($cc,2) == $offWhite {
+      color: $bgMainColor;
+    }
+    background-color: nth($cc,2);
+  }
+}
+
+/* Text Rotation */
+$ang: 15;
+@while $ang <= 345 {
+  .rotation-#{$ang} {
+    /* IE 9 */
+    -ms-transform: rotate($ang+deg);
+    /* Chrome, Safari, Opera */
+    -webkit-transform: rotate($ang+deg);
+    transform: rotate($ang+deg);
+  }
+  $ang: $ang+15;
+}
+
+
+
+/* Boundaries */
+.l-sided {
+  border-left: 15px solid !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 3px 18px 3px 5px !important; }
+
+.r-sided {
+  border-right: 15px solid !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 3px 5px 3px 18px !important; }
+
+.framed {
+  border: 3px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 8px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important; }
+
+.quoted {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px 10px 8px 10px !important;
+  font-style: italic !important; }
+
+.quoted:before {
+  position: relative;
+  top: -0.1em;
+  content: "\f10d";
+  font-family: "Font Awesome 5 Free";
+  color: rgba(210, 210, 210, 0.75);
+  padding-right: 0.3em;
+  text-rendering: auto;
+  font-variant: normal;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased; }
+
+.quoted:after {
+  position: relative;
+  top: 0.3em;
+  content: "\f10e";
+  font-family: "Font Awesome 5 Free";
+  color: rgba(210, 210, 210, 0.75);
+  padding-left: 0.2em;
+  text-rendering: auto;
+  font-variant: normal;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased; }
+
+.border-circled {
+  border-radius: 50% !important; }
+
+.border-flat {
+  box-shadow: none !important; }
+
+/* Border Colors */
+@each $cc in $cList {
+  .border-#{nth($cc,1)} {
+    border-color: nth($cc,2) !important; 
+  }   
+}
+
+/* Layout */
+
+.reveal .row {
+  margin: 0.15em 0em; }
+
+.reveal .row:before,
+.reveal .row:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.reveal .row *[class*='col-'] {
+  box-sizing: border-box;
+  position: relative;
+  left: 0;
+  float: left;
+  min-height: 1px;
+  padding: 0em 0.15em; }
+
+
+/* Column Widths */
+@for $v from 1 through 100 {
+  .col-#{$v} {
+    width:$v*1%;
+  }
+}
+/* Column translate to right */
+@for $v from 1 through 100 {
+  @if $v % 5 == 0 {
+    .push-#{$v} {
+      margin-left: $v*1% !important;
+    }
+  }
+}
+/* Column translate to left */
+@for $v from 1 through 100 {
+  @if $v % 5 == 0 {
+    .pull-#{$v} {
+      margin-left: $v*-1% !important;
+    }
+  }
+}
+/* Column translates down */
+@for $v from 1 through 100 {
+  @if $v % 5 == 0 {
+    .drop-#{$v} {
+      margin-top: $v*1% !important;
+    }
+  }
+}
+/* Column translate up */
+@for $v from 1 through 100 {
+  @if $v % 5 == 0 {
+    .lift-#{$v} {
+      margin-bottom: $v*1% !important;
+    }
+  }
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+.no-margin-top {
+  margin-top: 0 !important;
+}
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+/* Other */
+
+.tab { display:inline-block;
+       margin-left: 40px }
+
+/*********************************************
+* LIST WITH FONT AWESOME BULLET (class="icon")
+*********************************************/
+ul.icon {
+  list-style-type: none; }
+
+ul.icon li {
+  text-indent: -1.4em;
+  margin: 0.5em 2em; }
+
+ul.icon li:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005";
+  text-rendering: auto;
+  font-variant: normal;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased; }
+
+$iconList: circle f111, check-circle f058, question-circle f059, square f0c8, check-square f14a, arrow-circle f0a9, gear f013, star f005, caret-right f0da, play-circle f144, play f04b, laptop f109, paperclip f0c6, chart-line f201, chart-bar f080, chart-area f1fe, calculator f1ec, bullhorn f0a1, microchip f2db;
+@each $icon in $iconList {
+  ul.icon {
+    li.#{nth($icon,1)}:before {
+      content: #{'"\\' + nth($icon, 2) + '"'};
+    }
+  }
+}
+
+/* OLD
+ul.icon li.circle:before {
+  content: "\f111"; }
+
+ul.icon li.check-circle:before {
+  content: "\f058"; }
+
+ul.icon li.question-circle:before {
+  content: "\f059"; }
+
+ul.icon li.square:before {
+  content: "\f0c8"; }
+
+ul.icon li.check-square:before {
+  content: "\f14a"; }
+
+ul.icon li.arrow-circle:before {
+  content: "\f0a9"; }
+
+ul.icon li.gear:before {
+  content: "\f013"; }
+
+ul.icon li.star:before {
+  content: "\f005"; }
+
+ul.icon li.caret-right:before {
+  content: "\f0da"; }
+
+ul.icon li.play-circle:before {
+  content: "\f144"; }
+
+ul.icon li.play:before {
+  content: "\f04b"; }
+*/
+
+/*********************************************
+* TRANSITIONS
+*********************************************/
+/*Workaround to get back correct behavior
+of none-in and none-out*/
+section[data-transition*="none-out"].present,
+section[data-transition*="none-out"].past {
+  transition-duration: 0s !important; }
+
+section[data-transition*="none-in"].future,
+section[data-transition*="none-in"].present {
+  transition-duration: 0s !important; }
+
+
+/*********************************************
+* SPECIAL SLIDE CLASSES
+*********************************************/
+
+.title-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.title-slide.fullwidth div{
+  width: 100%;
+}
+
+.title-slide.danger {
+  background-color: $bgRed;
+}
+
+.title-slide.soothe {
+  background-color: $bgBlue;
+}
+
+/*********************************************
+* HEADERS ADDENDUMS
+*********************************************/
+
+.reveal p,
+.reveal div p {
+  text-align: left;
+  font-size: 0.7em;
+}
+
+.reveal ul,
+.reveal div ul,
+.reveal p ul {
+  font-size: 0.8em;
+}
+
+/*********************************************
+* FRAGMENT HIGHLIGHT
+*********************************************/
+
+
+@each $cc in $cList {
+  /********* #{nth($cc,1)} ******************/
+  .reveal .slides section .fragment {
+    &.highlight-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.visible {
+        color: nth($cc,2);
+      }
+    }
+    &.highlight-bg-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.visible {
+        @if nth($cc,2) == $lightGrey or nth($cc,2) == $offWhite {
+          color: $bgMainColor;
+        }
+        background-color: nth($cc,2);
+      }
+    }
+    &.highlight-current-bg-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.current-fragment {
+        @if nth($cc,2) == $lightGrey or nth($cc,2) == $offWhite {
+          color: $bgMainColor;
+        }
+        background-color: nth($cc,2);
+      }
+    }
+    &.underline-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.visible {
+        text-decoration: underline nth($cc,2);
+        -webkit-text-decoration: underline nth($cc,2);
+      }
+    }
+    &.underline-current-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.current-fragment {
+        text-decoration: underline nth($cc,2);
+        -webkit-text-decoration: underline nth($cc,2);
+
+      }
+    }
+    &.strike-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.visible {
+        text-decoration: line-through nth($cc,2);
+        -webkit-text-decoration: line-through nth($cc,2);
+      }
+    }
+    &.strike-current-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.current-fragment {
+        text-decoration: line-through nth($cc,2);
+        -webkit-text-decoration: line-through nth($cc,2);
+        
+      }
+    }
+    &.wavy-strike-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.visible {
+        text-decoration: line-through wavy nth($cc,2);
+        -webkit-text-decoration: linethrough wavy nth($cc,2);
+      }
+    }
+    &.wavy-strike-current-#{nth($cc ,1)} {
+      opacity: 1;
+      visibility: inherit;
+      &.current-fragment {
+        text-decoration: line-through wavy nth($cc,2);
+        -webkit-text-decoration: line-through wavy nth($cc,2);
+        
+      }
+    }
+  } 
+}
+
+/*********************************************
+* SCALE IFRAMES
+*********************************************/
+
+#scaled-frame-60 {
+  width: 2000px;
+  height: 1000px;
+  border: 0px; }
+#scaled-frame-60 {
+  zoom: 0.6;
+  -moz-transform: scale(0.6);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.6);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.6);
+  -webkit-transform-origin: 0 0;}
+
+#scaled-frame-80 {
+  width: 2000px;
+  height: 1000px;
+  border: 0px; }
+#scaled-frame-80 {
+  zoom: 0.80;
+  -moz-transform: scale(0.80);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.80);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.80);
+  -webkit-transform-origin: 0 0;}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ #scaled-frame-60  { zoom: 1;  }
+ #scaled-frame-75  { zoom: 1;  }
+}
