@@ -31,6 +31,7 @@ $green:     #73B55B;  // green
 $grey:      #d2d2d2;  // grey
 $lightGrey: #f3f3f3;  // light grey
 $blue:      #4682B4;  // b
+$yellow:    #F5D76E;  // yellow
 //---------------------------------------------
 
 // Override theme settings (see ../template/settings.scss)
@@ -110,7 +111,7 @@ section.has-light-background {
 
 /* Text Colorizing */
 
-$cList: purple $purple, mutedBlue $mutedBlue, offWhite $offWhite, orange $orange, red $red, green $green, grey $grey, lightGrey $lightGrey, blue $blue;
+$cList: purple $purple, mutedBlue $mutedBlue, offWhite $offWhite, orange $orange, red $red, green $green, grey $grey, lightGrey $lightGrey, blue $blue, yellow $yellow;
 
 @each $cc in $cList {
   .#{nth($cc,1)} {
@@ -160,6 +161,11 @@ $ang: 15;
   background-color: rgba(255, 255, 255, 0.05);
   padding: 3px 5px 3px 18px !important; }
 
+.top-sided {
+  border-top: 15px solid !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 18px 5px 3px 5px !important; }
+  
 .framed {
   border: 3px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 8px !important;
@@ -306,7 +312,7 @@ ul.icon li:before {
   font-weight: 900;
   -webkit-font-smoothing: antialiased; }
 
-$iconList: circle f111, check-circle f058, question-circle f059, square f0c8, check-square f14a, arrow-circle f0a9, gear f013, star f005, caret-right f0da, play-circle f144, play f04b, laptop f109, paperclip f0c6, chart-line f201, chart-bar f080, chart-area f1fe, calculator f1ec, bullhorn f0a1, microchip f2db;
+$iconList: circle f111, check-circle f058, question-circle f059, square f0c8, check-square f14a, arrow-circle f0a9, gear f013, star f005, caret-right f0da, play-circle f144, play f04b, laptop f109, paperclip f0c6, chart-line f201, chart-bar f080, chart-area f1fe, calculator f1ec, bullhorn f0a1, microchip f2db, smile f118, frown f119, exclamation f12a, exclamation-circle f06a, exclamation-triangle f071, thumbs-up f164, thumbsdown f165;
 @each $icon in $iconList {
   ul.icon {
     li.#{nth($icon,1)}:before {
@@ -315,40 +321,6 @@ $iconList: circle f111, check-circle f058, question-circle f059, square f0c8, ch
   }
 }
 
-/* OLD
-ul.icon li.circle:before {
-  content: "\f111"; }
-
-ul.icon li.check-circle:before {
-  content: "\f058"; }
-
-ul.icon li.question-circle:before {
-  content: "\f059"; }
-
-ul.icon li.square:before {
-  content: "\f0c8"; }
-
-ul.icon li.check-square:before {
-  content: "\f14a"; }
-
-ul.icon li.arrow-circle:before {
-  content: "\f0a9"; }
-
-ul.icon li.gear:before {
-  content: "\f013"; }
-
-ul.icon li.star:before {
-  content: "\f005"; }
-
-ul.icon li.caret-right:before {
-  content: "\f0da"; }
-
-ul.icon li.play-circle:before {
-  content: "\f144"; }
-
-ul.icon li.play:before {
-  content: "\f04b"; }
-*/
 
 /*********************************************
 * TRANSITIONS
